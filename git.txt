@@ -1,0 +1,66 @@
+git init
+> A.txt
+git add A.txt
+git commit -m "fitxer inicial"
+> B.txt
+git add B.txt
+git commit -m "fitxer inicial"
+echo "Canvi A1" >> A.txt
+echo "Canvi B1" >> B.txt
+git add A.txt B.txt
+git commit -m "Canvis als fitxers A.txt i B.txt"
+git branch branca1
+git checkout branca1
+> C.txt
+git add C.txt
+git commit -m "fitxer inicial"
+echo "canvi C1 branca 1" >> C.txt
+git add C.txt
+git commit -m "Canvi al fitxer C1 de branca1"
+git checkout master
+git branch branca2
+git checkout branca2
+> D.txt
+git add D.txt
+git commit -m "fitxer inicial"
+echo "canvia D1 branca 2" >> D.txt
+git add D.txt
+git commit -m "canvi al fitxer D.txt de branca2"
+git checkout branca1
+git merge -Xours branca2
+git checkout master
+git merge -Xours branca1
+> E.txt
+git add E.txt
+git commit -m "fitxer inicial"
+git branch branca3
+git checkout branca3
+echo "canvia E1 branca 3" >> E.txt
+git add E.txt
+git commit -m "canvi al fitxer E de branca3"
+git checkout master
+git branch branca4
+git checkout branca4
+echo "canvia E1 branca 4" >> E.txt
+git add E.txt
+git commit -m "canvi al fitxer E de branca4"
+git checkout master
+git merge -Xours branca3
+git merge -Xours branca4
+echo "Canvi A2" >> A.txt
+git add A.txt
+git commit -m "canvi A2 al fitxer A"
+git log --oneline
+git revert HEAD --no-edit
+echo "Canvi A3" >> A.txt
+git add A.txt
+git commit -m "Canvi 3 al fitxer A"
+echo "Canvi B2" >> B.txt
+git add B.txt
+git commit -m "Canvi 2 al fitxer B"
+echo "Canvi C1" >> C.txt
+git add C.txt
+git commit -m "Canvi 1 al fitxer C"
+git log --oneline
+git revert HEAD@{1} --no-edit
+
